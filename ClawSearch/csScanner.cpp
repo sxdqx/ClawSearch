@@ -100,7 +100,7 @@ void csScanner::PerformScan(bool firstScan)
 #undef HANDLE_SEARCHFOR
 
 	if (find == nullptr) {
-		IupMessage("Error", "Unhandled value type!");
+		IupMessage("错误", "扫描的值不能为空！");
 		return;
 	}
 
