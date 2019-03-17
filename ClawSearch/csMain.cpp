@@ -211,9 +211,9 @@ void csMain::SetScanTypeCombo(bool firstScan)
 	IupSetAttribute(m_hComboScanType, "REMOVEITEM", "ALL");
 
 	if (firstScan) {
-		IupSetAttribute(m_hComboScanType, "1", "Exact value");
-		IupSetAttribute(m_hComboScanType, "2", "Bigger than...");
-		IupSetAttribute(m_hComboScanType, "3", "Smaller than...");
+		IupSetAttribute(m_hComboScanType, "1", "��׼ֵ");
+		IupSetAttribute(m_hComboScanType, "2", "����...");
+		IupSetAttribute(m_hComboScanType, "3", "С��...");
 		IupSetInt(m_hComboScanType, "VALUE", (int)m_scanner.m_initialScanType);
 		return;
 	}
@@ -225,6 +225,10 @@ void csMain::SetScanTypeCombo(bool firstScan)
 	IupSetAttribute(m_hComboScanType, "5", "Smaller than...");
 	IupSetAttribute(m_hComboScanType, "6", "Increased value");
 	IupSetAttribute(m_hComboScanType, "7", "Decreased value");
+	IupSetAttribute(m_hComboScanType, "1", "��׼ֵ");
+	IupSetAttribute(m_hComboScanType, "2", "�仯����ֵ");
+	IupSetAttribute(m_hComboScanType, "4", "����...");
+	IupSetAttribute(m_hComboScanType, "5", "С��...");
 	IupSetInt(m_hComboScanType, "VALUE", (int)m_scanner.m_currentScanType);
 }
 
@@ -234,8 +238,8 @@ void csMain::Open()
 		return;
 	}
 
-	m_hButtonFirstScan = IupButton("First Scan", "ScanFirst");
-	m_hButtonNextScan = IupButton("Next Scan", "ScanNext");
+	m_hButtonFirstScan = IupButton("�״�ɨ��", "ScanFirst");
+	m_hButtonNextScan = IupButton("�ٴ�ɨ��", "ScanNext");
 	Ihandle* hButtons = IupSetAttributes(IupHbox(m_hButtonFirstScan, m_hButtonNextScan, nullptr), "MARGIN=0x0, GAP=5");
 
 	IupSetAttribute(m_hButtonNextScan, "ACTIVE", "NO");
@@ -252,24 +256,24 @@ void csMain::Open()
 	IupSetAttribute(m_hComboScanType, "EXPAND", "HORIZONTAL");
 	IupSetAttribute(m_hComboScanType, "VISIBLEITEMS", "10");
 	SetScanTypeCombo(true);
-	Ihandle* hScanType = IupSetAttributes(IupHbox(IupLabel("Scan type"), m_hComboScanType, nullptr), "MARGIN=0x0, GAP=5");
+	Ihandle* hScanType = IupSetAttributes(IupHbox(IupLabel("ɨ������"), m_hComboScanType, nullptr), "MARGIN=0x0, GAP=5");
 	CLAW_SETCALLBACK(m_hComboScanType, "ACTION", ScanValueTypeChanged);
 
 	m_hComboValueType = IupList(nullptr);
 	IupSetAttribute(m_hComboValueType, "DROPDOWN", "YES");
 	IupSetAttribute(m_hComboValueType, "EXPAND", "HORIZONTAL");
 	IupSetAttribute(m_hComboValueType, "VISIBLEITEMS", "10");
-	IupSetAttribute(m_hComboValueType, "1", "Byte");
-	IupSetAttribute(m_hComboValueType, "2", "2 Bytes");
-	IupSetAttribute(m_hComboValueType, "3", "4 Bytes");
-	IupSetAttribute(m_hComboValueType, "4", "8 Bytes");
-	IupSetAttribute(m_hComboValueType, "5", "Float");
-	IupSetAttribute(m_hComboValueType, "6", "Double");
+	IupSetAttribute(m_hComboValueType, "1", "�ֽ�");
+	IupSetAttribute(m_hComboValueType, "2", "2 �ֽ�");
+	IupSetAttribute(m_hComboValueType, "3", "4 �ֽ�");
+	IupSetAttribute(m_hComboValueType, "4", "8 �ֽ�");
+	IupSetAttribute(m_hComboValueType, "5", "������");
+	IupSetAttribute(m_hComboValueType, "6", "˫����");
 	IupSetInt(m_hComboValueType, "VALUE", (int)m_scanner.m_currentScanValueType);
-	Ihandle* hValueType = IupSetAttributes(IupHbox(IupLabel("Value type"), m_hComboValueType, nullptr), "MARGIN=0x0, GAP=5");
+	Ihandle* hValueType = IupSetAttributes(IupHbox(IupLabel("��ֵ����"), m_hComboValueType, nullptr), "MARGIN=0x0, GAP=5");
 	CLAW_SETCALLBACK(m_hComboValueType, "ACTION", ScanValueTypeChanged);
 
-	m_hCheckFastScan = IupToggle("Fast Scan", nullptr);
+	m_hCheckFastScan = IupToggle("�״�ɨ��", nullptr);
 	IupSetAttribute(m_hCheckFastScan, "VALUE", "ON");
 
 	m_hTextFastScanAlign = IupText(nullptr);
@@ -288,7 +292,7 @@ void csMain::Open()
 
 	Ihandle* hFastScan = IupSetAttributes(IupHbox(m_hCheckFastScan, m_hTextFastScanAlign, nullptr), "MARGIN=0x0, GAP=5");
 
-	m_hCheckPauseWhileScanning = IupToggle("Pause while scanning", nullptr);
+	m_hCheckPauseWhileScanning = IupToggle("ɨ��ʱ��ͣ", nullptr);
 
 	m_hFrameScanOptions = IupFrame(IupVbox(
 		m_hFloatMethod,
@@ -296,7 +300,7 @@ void csMain::Open()
 		m_hCheckPauseWhileScanning,
 		nullptr)
 	);
-	IupSetAttribute(m_hFrameScanOptions, "TITLE", "Scan Options");
+	IupSetAttribute(m_hFrameScanOptions, "TITLE", "ɨ��ѡ��");
 	IupSetAttribute(m_hFrameScanOptions, "EXPAND", "YES");
 
 	Ihandle* vControls = IupSetAttributes(IupVbox(
