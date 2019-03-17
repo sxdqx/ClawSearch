@@ -131,7 +131,7 @@ int csMain::FirstScan()
 
 		IupSetAttribute(m_hListResults, "REMOVEITEM", "ALL");
 
-		IupSetAttribute(m_hButtonFirstScan, "TITLE", "First Scan");
+		IupSetAttribute(m_hButtonFirstScan, "TITLE", "�״�ɨ��");
 
 		IupSetAttribute(m_hComboValueType, "ACTIVE", "YES");
 		IupSetAttribute(m_hButtonNextScan, "ACTIVE", "NO");
@@ -143,7 +143,7 @@ int csMain::FirstScan()
 	// First scan
 	m_currentScan = 1;
 
-	IupSetAttribute(m_hButtonFirstScan, "TITLE", "New Scan");
+	IupSetAttribute(m_hButtonFirstScan, "TITLE", "��ɨ��");
 	SetScanTypeCombo(false);
 
 	PerformScan(true);
