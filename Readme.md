@@ -2,7 +2,7 @@
 
 中文版
 
-X64DBG的内存扫描插件，灵感来自Cheat Engine。
+x64dbg的内存扫描插件，灵感来自Cheat Engine。
 
 ![](Screenshot.png)
 
