@@ -2,7 +2,7 @@
 
 中文版
 
-A memory scanner plugin for x64dbg, inspired by Cheat Engine.
+X64DBG的内存扫描插件，灵感来自Cheat Engine。
 
 ![](Screenshot.png)
 
