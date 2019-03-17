@@ -131,7 +131,7 @@ int csMain::FirstScan()
 
 		IupSetAttribute(m_hListResults, "REMOVEITEM", "ALL");
 
-		IupSetAttribute(m_hButtonFirstScan, "TITLE", "ï¿½×´ï¿½É¨ï¿½ï¿½");
+		IupSetAttribute(m_hButtonFirstScan, "TITLE", "Ê×´ÎÉ¨Ãè");
 
 		IupSetAttribute(m_hComboValueType, "ACTIVE", "YES");
 		IupSetAttribute(m_hButtonNextScan, "ACTIVE", "NO");
@@ -143,7 +143,7 @@ int csMain::FirstScan()
 	// First scan
 	m_currentScan = 1;
 
-	IupSetAttribute(m_hButtonFirstScan, "TITLE", "ï¿½ï¿½É¨ï¿½ï¿½");
+	IupSetAttribute(m_hButtonFirstScan, "TITLE", "ÐÂÉ¨Ãè");
 	SetScanTypeCombo(false);
 
 	PerformScan(true);
@@ -211,24 +211,20 @@ void csMain::SetScanTypeCombo(bool firstScan)
 	IupSetAttribute(m_hComboScanType, "REMOVEITEM", "ALL");
 
 	if (firstScan) {
-		IupSetAttribute(m_hComboScanType, "1", "ï¿½ï¿½×¼Öµ");
-		IupSetAttribute(m_hComboScanType, "2", "ï¿½ï¿½ï¿½ï¿½...");
-		IupSetAttribute(m_hComboScanType, "3", "Ð¡ï¿½ï¿½...");
+		IupSetAttribute(m_hComboScanType, "1", "¾«×¼Öµ");
+		IupSetAttribute(m_hComboScanType, "2", "´óÓÚ...");
+		IupSetAttribute(m_hComboScanType, "3", "Ð¡ÓÚ...");
 		IupSetInt(m_hComboScanType, "VALUE", (int)m_scanner.m_initialScanType);
 		return;
 	}
 
-	IupSetAttribute(m_hComboScanType, "1", "Exact value");
-	IupSetAttribute(m_hComboScanType, "2", "Changed value");
-	IupSetAttribute(m_hComboScanType, "3", "Unchanged value");
-	IupSetAttribute(m_hComboScanType, "4", "Bigger than...");
-	IupSetAttribute(m_hComboScanType, "5", "Smaller than...");
-	IupSetAttribute(m_hComboScanType, "6", "Increased value");
-	IupSetAttribute(m_hComboScanType, "7", "Decreased value");
-	IupSetAttribute(m_hComboScanType, "1", "ï¿½ï¿½×¼Öµ");
-	IupSetAttribute(m_hComboScanType, "2", "ï¿½ä»¯ï¿½ï¿½ï¿½ï¿½Öµ");
-	IupSetAttribute(m_hComboScanType, "4", "ï¿½ï¿½ï¿½ï¿½...");
-	IupSetAttribute(m_hComboScanType, "5", "Ð¡ï¿½ï¿½...");
+	IupSetAttribute(m_hComboScanType, "1", "¾«×¼Öµ");
+	IupSetAttribute(m_hComboScanType, "2", "±ä»¯µÄÊýÖµ");
+	IupSetAttribute(m_hComboScanType, "3", "ÊýÖµ²»±ä");
+	IupSetAttribute(m_hComboScanType, "4", "´óÓÚ...");
+	IupSetAttribute(m_hComboScanType, "5", "Ð¡ÓÚ...");
+	IupSetAttribute(m_hComboScanType, "6", "Ôö¼ÓµÄÖµ");
+	IupSetAttribute(m_hComboScanType, "7", "¼õÉÙµÄÖµ");
 	IupSetInt(m_hComboScanType, "VALUE", (int)m_scanner.m_currentScanType);
 }
 
@@ -238,8 +234,8 @@ void csMain::Open()
 		return;
 	}
 
-	m_hButtonFirstScan = IupButton("ï¿½×´ï¿½É¨ï¿½ï¿½", "ScanFirst");
-	m_hButtonNextScan = IupButton("ï¿½Ù´ï¿½É¨ï¿½ï¿½", "ScanNext");
+	m_hButtonFirstScan = IupButton("Ê×´ÎÉ¨Ãè", "ScanFirst");
+	m_hButtonNextScan = IupButton("ÔÙ´ÎÉ¨Ãè", "ScanNext");
 	Ihandle* hButtons = IupSetAttributes(IupHbox(m_hButtonFirstScan, m_hButtonNextScan, nullptr), "MARGIN=0x0, GAP=5");
 
 	IupSetAttribute(m_hButtonNextScan, "ACTIVE", "NO");
@@ -256,24 +252,24 @@ void csMain::Open()
 	IupSetAttribute(m_hComboScanType, "EXPAND", "HORIZONTAL");
 	IupSetAttribute(m_hComboScanType, "VISIBLEITEMS", "10");
 	SetScanTypeCombo(true);
-	Ihandle* hScanType = IupSetAttributes(IupHbox(IupLabel("É¨ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½"), m_hComboScanType, nullptr), "MARGIN=0x0, GAP=5");
+	Ihandle* hScanType = IupSetAttributes(IupHbox(IupLabel("É¨ÃèÀàÐÍ"), m_hComboScanType, nullptr), "MARGIN=0x0, GAP=5");
 	CLAW_SETCALLBACK(m_hComboScanType, "ACTION", ScanValueTypeChanged);
 
 	m_hComboValueType = IupList(nullptr);
 	IupSetAttribute(m_hComboValueType, "DROPDOWN", "YES");
 	IupSetAttribute(m_hComboValueType, "EXPAND", "HORIZONTAL");
 	IupSetAttribute(m_hComboValueType, "VISIBLEITEMS", "10");
-	IupSetAttribute(m_hComboValueType, "1", "ï¿½Ö½ï¿½");
-	IupSetAttribute(m_hComboValueType, "2", "2 ï¿½Ö½ï¿½");
-	IupSetAttribute(m_hComboValueType, "3", "4 ï¿½Ö½ï¿½");
-	IupSetAttribute(m_hComboValueType, "4", "8 ï¿½Ö½ï¿½");
-	IupSetAttribute(m_hComboValueType, "5", "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
-	IupSetAttribute(m_hComboValueType, "6", "Ë«ï¿½ï¿½ï¿½ï¿½");
+	IupSetAttribute(m_hComboValueType, "1", "×Ö½Ú");
+	IupSetAttribute(m_hComboValueType, "2", "2 ×Ö½Ú");
+	IupSetAttribute(m_hComboValueType, "3", "4 ×Ö½Ú");
+	IupSetAttribute(m_hComboValueType, "4", "8 ×Ö½Ú");
+	IupSetAttribute(m_hComboValueType, "5", "µ¥¸¡µã");
+	IupSetAttribute(m_hComboValueType, "6", "Ë«¸¡µã");
 	IupSetInt(m_hComboValueType, "VALUE", (int)m_scanner.m_currentScanValueType);
-	Ihandle* hValueType = IupSetAttributes(IupHbox(IupLabel("ï¿½ï¿½Öµï¿½ï¿½ï¿½ï¿½"), m_hComboValueType, nullptr), "MARGIN=0x0, GAP=5");
+	Ihandle* hValueType = IupSetAttributes(IupHbox(IupLabel("ÊýÖµÀàÐÍ"), m_hComboValueType, nullptr), "MARGIN=0x0, GAP=5");
 	CLAW_SETCALLBACK(m_hComboValueType, "ACTION", ScanValueTypeChanged);
 
-	m_hCheckFastScan = IupToggle("ï¿½×´ï¿½É¨ï¿½ï¿½", nullptr);
+	m_hCheckFastScan = IupToggle("Ê×´ÎÉ¨Ãè", nullptr);
 	IupSetAttribute(m_hCheckFastScan, "VALUE", "ON");
 
 	m_hTextFastScanAlign = IupText(nullptr);
@@ -292,7 +288,7 @@ void csMain::Open()
 
 	Ihandle* hFastScan = IupSetAttributes(IupHbox(m_hCheckFastScan, m_hTextFastScanAlign, nullptr), "MARGIN=0x0, GAP=5");
 
-	m_hCheckPauseWhileScanning = IupToggle("É¨ï¿½ï¿½Ê±ï¿½ï¿½Í£", nullptr);
+	m_hCheckPauseWhileScanning = IupToggle("É¨ÃèÊ±ÔÝÍ£", nullptr);
 
 	m_hFrameScanOptions = IupFrame(IupVbox(
 		m_hFloatMethod,
@@ -300,7 +296,7 @@ void csMain::Open()
 		m_hCheckPauseWhileScanning,
 		nullptr)
 	);
-	IupSetAttribute(m_hFrameScanOptions, "TITLE", "É¨ï¿½ï¿½Ñ¡ï¿½ï¿½");
+	IupSetAttribute(m_hFrameScanOptions, "TITLE", "É¨ÃèÑ¡Ïî");
 	IupSetAttribute(m_hFrameScanOptions, "EXPAND", "YES");
 
 	Ihandle* vControls = IupSetAttributes(IupVbox(
