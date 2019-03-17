@@ -1,5 +1,7 @@
 # ClawSearch
+
 中文版
+
 A memory scanner plugin for x64dbg, inspired by Cheat Engine.
 
 ![](Screenshot.png)
